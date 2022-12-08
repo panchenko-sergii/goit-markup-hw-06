@@ -134,6 +134,7 @@ section {
 	display: block;
 	content: "";
 	width: 100%;
+	transform: scaleX(1.1);
 	height: 4px;
 	border-radius: 2px;
 	background-color: var(--color-link-blue);
@@ -302,6 +303,24 @@ section {
 
 .about-picture-title {
 	flex-basis: calc((100% - 90px) / 4);
+	position: relative;
+}
+
+.about-picture-text {
+	position: absolute;
+    height: 70px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient( rgba(47, 48, 58, 0.8), rgba(47, 48, 58, 0.8) );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    line-height: 1.14;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-white);
 }
 
 .team-section {
@@ -364,29 +383,24 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 25%;
-	transition: 
+	border-radius: 50%;
+	color: var(--icon-color-gray);
+	transition: 	
 		background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-		border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1); 
+		color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-soc-icon {
-	fill: var(--icon-color-gray)
+	fill: currentColor;
 }
 
 .team-soc-link:hover,
 .team-soc-link:focus {
 	background-color: var(--icon-bg-active);
 	border-radius: 50%;
+	color: var(--icon-color-white);
 }
 
-.team-soc-link:hover .team-soc-icon {
-	fill: var(--icon-color-white);
-}
-
-.team-soc-link:focus .team-soc-icon {
-	fill: var(--icon-color-white);
-}
 /* ____________________Client section__________________ */
 
 .clients-list {
@@ -416,7 +430,7 @@ section {
   fill: var(--icon-bg-active);
 }
 
-/*------------footer------------------*/
+/*----------------footer------------------*/
 
 .footer {
 	background-color: var(--color-background);
@@ -539,6 +553,48 @@ footer .container {
 	background: var(--icon-bg-active);
 }
 
+.subscribe-input {
+	padding: 15px;
+    min-width: 358px;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+}
+
+.subscribe {
+	padding-left: 93px;
+}
+
+.subscribe-button {
+	display: inline-block;
+    min-width: 200px;
+    min-height: 50px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 5px;
+    margin-left: 12px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.88;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    background-color: var(--icon-bg-active);
+    color: var(--color-white);
+    fill: var(--color-white);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
+}
+
+.icon-send {
+	vertical-align: middle;
+	margin-left: 10px;
+}
+
 /*------------Portfolio------------------*/
 
 /*.portfolio-section {
@@ -659,6 +715,8 @@ footer .container {
 	color: var(--color-letter-gray);
 }
 
+/*------------Modal window------------------*/
+
 .backdrop {
 	position: fixed;
 	top: 0;
@@ -701,12 +759,19 @@ footer .container {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	border-radius: 50%;
 	cursor: pointer;
+	transition: 
+		color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		border-color 250ms cubic-bezier(0.4, 0, 0.2);
 }
 
 .icon-close-btn {
-	fill: var(--color-black);
+	fill: inherit;
 }
 
+.modal-close:hover, .modal-close:focus {
+	fill: var(--icon-bg-active);
+
+}
 .is-hidden {
 	opacity: 0;
 	visibility: hidden;
@@ -722,21 +787,134 @@ footer .container {
 	margin-bottom: 12px;
 }
 
+.input-wrapper {
+	position: relative;
+	margin-bottom: 10px;
+}
+
 .modal-input {
+	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	width: 100%;
 	height: 40px;
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	border-radius: 4px;
 	background-color: transparent;
-	margin-bottom: 10px;
 	padding-left: 42px;
 	color: var(--color-letter-gray);
 	font-size: 12px;
 	line-height: 1.1666;
 	letter-spacing: 0.01em;
-	
+}
+
+.modal-icon {
+	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.modal-input:focus,
+.modal-input:hover {
+	border: 1px solid var(--color-link-blue);
+	border-radius: 4px;
+}
+
+.modal-input:focus + .modal-icon,
+.modal-input:hover + .modal-icon {
+	fill: var(--color-link-blue);
+}
+
+.modal-comment {
+	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	width: 100%;
+	height: 120px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 1.666;
+	letter-spacing: 0.01em;
+	color: rgba(117, 117, 117, 0.5);
+	border: 1px solid rgba(33, 33, 33, 0.2);
+	border-radius: 4px;
+	resize: none;
+	padding: 12px 16px;
+	margin-bottom: 20px;
+}
+
+.modal-comment:focus,
+.modal-comment:hover {
+	border: 1px solid var(--color-link-blue);
+	border-radius: 4px;
+}
+
+.input-label {
+	position: relative;
+	display: block;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 1.1666;
+	letter-spacing: 0.01em;
+	margin-bottom: 4px;
 }
 
 .modal-input::placeholder {
-	
+	color: var(--color-link-blue)
+}
+
+.modal-button {
+	min-width: 200px;
+	height: 50px;
+	background-color: var(--color-link-blue);
+	font-family: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.875;
+	display: block;
+	letter-spacing: 0.06em;
+	color: var(--color-white);
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+	margin: 30px auto 0px;
+	transition:
+	    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.check-text span {
+	width: 16px;
+	height: 15px;
+	border: 2px solid #303030;
+	border-radius: 2px;
+	margin-right: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	fill: transparent;
+}
+
+.check-text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 1.71;
+	color: var(--color-letter-gray);
+}
+
+.modal-check:checked + .check-text span {
+	background-color: var(--icon-bg-active);
+	border: none;
+	fill: #ffffff;
+}
+
+.license-terms-link {
+	text-decoration-line: underline;
+    color: var(--color-link-blue);
+}
+
+.modal-button:hover,
+.modal-button:focus {
+	background-color: var(--butn-backgrnd-color);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
