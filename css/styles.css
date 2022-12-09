@@ -223,12 +223,12 @@ section {
 	display: block;
 	letter-spacing: 0.06em;
 	color: var(--color-white);
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 	border-radius: 4px;
 	border: none;
 	cursor: pointer;
 	margin: 0 auto;
 	transition:
+		box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
 	    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -397,7 +397,6 @@ section {
 .team-soc-link:hover,
 .team-soc-link:focus {
 	background-color: var(--icon-bg-active);
-	border-radius: 50%;
 	color: var(--icon-color-white);
 }
 
@@ -554,6 +553,7 @@ footer .container {
 }
 
 .subscribe-input {
+	outline: none;
 	padding: 15px;
     min-width: 358px;
     font-size: 16px;
@@ -564,6 +564,11 @@ footer .container {
     border: 1px solid rgba(255, 255, 255, 0.3);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
     border-radius: 4px;
+	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-input:focus {
+	border: 1px solid var(--color-link-blue); 
 }
 
 .subscribe {
@@ -587,7 +592,15 @@ footer .container {
     background-color: var(--icon-bg-active);
     color: var(--color-white);
     fill: var(--color-white);
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
+   	transition:
+		box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+	    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-button:hover,
+.subscribe-button:focus {
+	background-color: var(--butn-backgrnd-color);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15)
 }
 
 .icon-send {
@@ -760,15 +773,15 @@ footer .container {
 	border-radius: 50%;
 	cursor: pointer;
 	transition: 
-		color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-		border-color 250ms cubic-bezier(0.4, 0, 0.2);
+		fill 250ms cubic-bezier(0.4, 0, 0.2, 1);		
 }
 
 .icon-close-btn {
 	fill: inherit;
 }
 
-.modal-close:hover, .modal-close:focus {
+.modal-close:hover, 
+.modal-close:focus {
 	fill: var(--icon-bg-active);
 
 }
@@ -793,58 +806,54 @@ footer .container {
 }
 
 .modal-input {
-	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	outline: none;
 	width: 100%;
 	height: 40px;
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	border-radius: 4px;
 	background-color: transparent;
 	padding-left: 42px;
-	color: var(--color-letter-gray);
+	padding-right: 12px;
 	font-size: 12px;
 	line-height: 1.1666;
 	letter-spacing: 0.01em;
+	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-icon {
-	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 	position: absolute;
 	left: 12px;
 	top: 50%;
 	transform: translateY(-50%);
+	transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-input:focus,
-.modal-input:hover {
+.modal-input:focus {
 	border: 1px solid var(--color-link-blue);
-	border-radius: 4px;
 }
 
-.modal-input:focus + .modal-icon,
-.modal-input:hover + .modal-icon {
+.modal-input:focus + .modal-icon {
 	fill: var(--color-link-blue);
 }
 
 .modal-comment {
-	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	outline: none;
 	width: 100%;
 	height: 120px;
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 1.666;
 	letter-spacing: 0.01em;
-	color: rgba(117, 117, 117, 0.5);
 	border: 1px solid rgba(33, 33, 33, 0.2);
 	border-radius: 4px;
 	resize: none;
 	padding: 12px 16px;
 	margin-bottom: 20px;
+	transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-comment:focus,
-.modal-comment:hover {
+.modal-comment:focus {
 	border: 1px solid var(--color-link-blue);
-	border-radius: 4px;
 }
 
 .input-label {
@@ -855,6 +864,7 @@ footer .container {
 	line-height: 1.1666;
 	letter-spacing: 0.01em;
 	margin-bottom: 4px;
+	color: var(--color-letter-gray);
 }
 
 .modal-input::placeholder {
@@ -877,6 +887,7 @@ footer .container {
 	cursor: pointer;
 	margin: 30px auto 0px;
 	transition:
+		box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
 	    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -890,6 +901,10 @@ footer .container {
 	align-items: center;
 	justify-content: center;
 	fill: transparent;
+	transition: 
+		border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+		fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .check-text {
@@ -904,7 +919,7 @@ footer .container {
 
 .modal-check:checked + .check-text span {
 	background-color: var(--icon-bg-active);
-	border: none;
+	border: 2px solid transparent;
 	fill: #ffffff;
 }
 
